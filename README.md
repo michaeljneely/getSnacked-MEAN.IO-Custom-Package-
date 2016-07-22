@@ -6,10 +6,10 @@ Built for the Software Engineering I module during my second year at NUIG.
 
 Functionalities
 ---------------------
-Discussion/content-sharing system similar to Reddit
-Messaging
-Profile pages
-Personalised RSS feeds
-Facebook authentication
-Explore local restaurants with Google Maps and Yelp integration
-Explore culinary facebook pages via widgets
+-Discussion/content-sharing system similar to Reddit
+-Messaging
+-Profile pages
+-Personalised RSS feeds
+-Facebook authentication
+-Explore local restaurants with Google Maps and Yelp integration
+-Explore culinary facebook pages via widgets
