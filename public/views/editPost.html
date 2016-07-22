@@ -1,0 +1,47 @@
+<div class = "" data-ng-controller="PostController" ng-init="loadPost();ownsPost()">
+<div class="" ng-if="isOwner">
+<form name="postEditForm" class="form-horizontal col-md-8" role="form" data-ng-submit="edit(postForm)">
+
+ <div class="row">
+          <div class="col-lg-12">
+            <div class="well bs-component">
+              <form class="form-horizontal">
+                <fieldset>
+                  <legend>Edit Post</legend>
+                  <div class="form-group">
+
+<!--Title -->
+	<div class="form-group">
+      <label mean-token="'edit-title'" class="col-md-2 control-label">Title</label>
+      <div class="col-md-8">
+        <input name="title" type="text" minlength=15 class="form-control" id="title" placeholder="Title" data-ng-model="post.title" required>
+      </div>
+    </div>
+	
+	<!--Text-->
+    <div class="form-group">
+      <label mean-token="'edit-text'" for="text" class="col-md-2 control-label">Text</label>
+      <div class="col-md-8">
+        <textarea name="text" minlength=50 id="text" cols="30" rows="10" placeholder="Text" class="form-control" data-ng-model="post.content" required> </textarea>
+      </div>
+    </div>
+	
+	<!-- Submit Button -->
+    <div class="form-group">
+      <div class="col-md-offset-1 col-md-8">
+        <button mean-token="'create-submit'" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+</div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+
+</form>
+</div>
+	<div class="error" ng-if="!isOwner">
+		<img src="/g/assets/img/500.jpg" />
+		<h1>You arent the owner of this post!</h1>
+	</div>
+</div>

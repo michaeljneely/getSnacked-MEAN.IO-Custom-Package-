@@ -1,0 +1,90 @@
+<div class = "" data-ng-controller="UserController" ng-init="loadMe();loadMessages();loadSentMessages();loadUsersFeeds()">
+<div class = "boxShadows">    
+<div class="breadcrumb">
+<h2> <img class="img-thumbnail" src="{{user.facebook.picture.data.url}}" /> {{user.name}} </h2>
+</div>
+</div>
+<hr>
+<div class = "boxShadows">    
+<div class="breadcrumb">
+<h4> Information <span class="glyphicon glyphicon-info-sign"></span></h4>
+<p> Your Snack Points : {{user.karma}} </p>
+<p> Your Email : {{user.email}} </p>
+</div>
+</div>
+<div class = "" data-ng-controller="PostController" ng-init="loadCurrentUsersPosts()">
+<div class = "boxShadows">    
+<div class="breadcrumb">
+<h4> My Posts <span class="glyphicon glyphicon-comment"></span></h4>
+<hr>
+<div class="my_posts" ng-repeat = "mp in myPosts track by $index">
+<p><a ng-href="/g/topics/{{mp.topic}}/{{mp.post_id}}"> {{mp.title}} </a></p>
+<p><a class="btn btn-primary" ng-click="redirect(mp.post_id, mp.topic)"> Edit Post </a>
+<a class="btn btn-warning" ng-click="deletePost(mp)"> Delete Post </a></p>
+<hr>
+</div>
+</div>
+</div>
+<div class = "boxShadows">    
+<div class="breadcrumb">
+<h4> Inbox <span class="glyphicon glyphicon-folder-close"></span></h4>
+<hr>
+<p ng-if="messages404"> No Messages </p>
+<div class="my_messages" ng-repeat="m in messages track by $index" ng-if="!messages404">
+<h4> Message {{$index+1}} </h4>
+<p> {{m.content}} </p>
+<p> Sent By: <a href="/g/users/{{m.author_id}}"> {{m.author_name}} </a> at {{parseDate(m.date)}} <p>
+<a class="btn btn-primary" ng-click="showReply()"> Reply </a>
+<a class="btn btn-warning" ng-click="deleteMessage(m)"> Delete </a>
+<div ng-if="isReplying">
+	<form name="messageReplyForm" data-ng-submit="reply(m.author_id, m.author_name, r.content)">
+		<textarea name="text" minlength=10 data-ng-model="r.content" id="text" cols="30" rows="10" placeholder="Text" class="form-control" required></textarea>
+		<button mean-token="'reply-submit'" type="submit" class="btn btn-info">Submit</button>		
+	</form>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class = "boxShadows"> 
+<div class="breadcrumb">
+<h4> Sent Messages <span class="glyphicon glyphicon-envelope"></span></h4>
+<hr>
+<p ng-if="sentMessages404"> No Messages </p>
+<div class="sent_messages" ng-repeat="s in sentMessages track by $index" ng-if="!sentMessages404">
+<h5> Message {{$index+1}} </h5>
+<p> {{s.content}} </p>
+<p> Sent To: <a href="/g/users/{{s.recipient_id}}"> {{s.recipient_name}} </a> at {{parseDate(s.date)}} <p>
+<hr>
+</div>
+</div>
+</div>
+</div>
+    <div class = "boxShadows">
+<div class="breadcrumb">
+<h4> My Feeds <span class="glyphicon glyphicon-list-alt"></span></h4>
+<hr>
+<a href="#" class="btn btn-primary" ng-click="redirectToAddFeed()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a Feed </a>
+<div class="my_feeds" ng-repeat="f in feeds track by $index">
+<hr>
+<p> {{f.feed_name}} </p>
+<p> <a class="btn btn-primary" ng-click="showFeed(f)"> Show Feed </a> <a class="btn btn-warning" ng-click="deleteFeed(f)"> Delete Feed </a> </p>
+<hr>
+</div>
+	<div class="row-fluid" ng-show="feedItems.length > 0">
+		<h2> {{feedTitle}} </h2> <a class="btn btn-primary btn-xs" ng-click="minimizeFeed()"> Minimize </a>
+		<hr>
+		<ul class="unstyled">
+			<span class="badge badge-warning" >{{(feedItems | filter:filterText).length}} Items</span>
+			<li ng-repeat="feed in feedItems | filter:filterText">                    
+				<h5><a href="{{feed.link}}">{{feed.title}}</a></h5>                                        
+				<p class="text-left">{{feed.contentSnippet}}</p>                    
+				<span class="small">{{feed.publishedDate}}</span>
+			</li>                
+		</ul>  
+		
+	</div>
+</div>
+</div>
+</div>
+</div>

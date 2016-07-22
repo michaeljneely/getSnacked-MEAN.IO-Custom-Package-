@@ -1,0 +1,24 @@
+<div class = "" data-ng-controller="UserController" ng-init="loadUser()">
+<div ng-if="!is500">
+<div class="breadcrumb">
+<h2> <img class="img-thumbnail" src="{{user.facebook.picture.data.url}}"/> {{user.name}} </h2>
+</div>
+<hr>
+<div class="breadcrumb">
+<h2> Information: </h2>
+<p> Snack Points : {{user.karma}} </p>
+<p> Email : {{user.email}}</p>
+</div>
+<a class="btn btn-primary"ng-click="showSending()"> Send a Message </a>
+<div ng-if="isSending">
+	<form name="messageSendingForm" data-ng-submit="sendMessage(r.content)">
+		<textarea name="text" minlength=10 data-ng-model="r.content" id="text" cols="30" rows="10" placeholder="Text" class="form-control" required></textarea>
+		<button mean-token="'send-submit'" type="submit" class="btn btn-info">Submit</button>		
+	</form>
+</div>
+</div>
+<div class="error" ng-if="is500">
+	<img src="/g/assets/img/500.jpg" />
+	<h1>Could Not Load User</h1>
+</div>
+</div>

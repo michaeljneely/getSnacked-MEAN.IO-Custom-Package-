@@ -1,0 +1,51 @@
+<section data-ng-controller="PostController">
+  <form name="postForm" class="form-horizontal col-md-8" role="form" data-ng-submit="create(postForm)">
+            <div class="row">
+          <div class="col-lg-12">
+            <div class="well bs-component">
+              <form class="form-horizontal">
+                <fieldset>
+                  <legend>Create Post</legend>
+                  <div class="form-group">
+	
+	<!--Title -->
+	<div class="form-group">
+      <label mean-token="'create-title'" class="col-md-2 control-label">Title</label>
+      <div class="col-md-8">
+        <input name="title" type="text" minlength=5 class="form-control" data-ng-model="post.title" id="title" placeholder="Title" required>
+      </div>
+    </div>
+	
+	<!--Text-->
+    <div class="form-group">
+      <label mean-token="'create-text'" for="text" class="col-md-2 control-label">Text</label>
+      <div class="col-md-8">
+        <textarea name="text" minlength=50 data-ng-model="post.content" id="text" cols="30" rows="10" placeholder="Text" class="form-control" required></textarea>
+      </div>
+    </div>
+	
+	<!--Date -->
+	<input name="date" type="hidden" data-ng-model="post.date" value=""/>
+	<!--Author-->
+	<input name="date" type="hidden" data-ng-model="post.author" value=""/>
+	<!--Topic-->
+	<input name="date" type="hidden" data-ng-model="post.topic" value=""/>
+	<!--Ups-->
+	<input name="ups" type="hidden" data-ng-model="post.ups" value="0"/>
+	<!--Downs-->
+	<input name="downs" type="hidden" data-ng-model="post.downs" value="0"/>
+	
+	<!-- Submit Button -->
+    <div class="form-group">
+      <div class="col-md-offset-1 col-md-8">
+        <button mean-token="'create-submit'" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+	
+
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+</section>

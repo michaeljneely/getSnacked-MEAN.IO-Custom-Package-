@@ -1,0 +1,7 @@
+.g-example h1 {
+  background-color: purple
+}
+
+.angular-google-map-container { height:75%; width:75%; position:absolute;}
+
+.google-powered-by-container { position: fixed; bottom: 0; margin: 50px;}

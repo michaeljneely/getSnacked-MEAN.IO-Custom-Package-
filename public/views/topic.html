@@ -1,0 +1,63 @@
+<div class = "row" data-ng-controller="TopicController" ng-init="load()">
+	<div class="row col-lg-2 text-center">
+		<!-- If No Error - Display Post Creation Button -->
+		<div class ="panel panel-primary" ng-if = "!is500">
+		<div class="panel-heading"> <h2> Actions </h2> </div>
+		<div class="panel-body text-left">
+		<p><a class = "btn btn-primary" ng-click="createPostRedirect()" > New Post </a></p>
+		<a class = "btn btn-primary" ng-click="topicsRedirect()">Back to Topics </a>
+		<h3><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Rules </h3>
+		<hr>
+        <div class = "text-center">    
+            <div class = "blurTxtBox1">    
+                <h4><li style = "list-style-type: none;"> Be Respectful </li></h4>
+                <h4><li style = "list-style-type: none;"> Stay on Topic </li></h4>
+                <h4><li style = "list-style-type: none;"> Keep it Clean </li></h4>
+            </div>
+        </div>    
+		</div>
+		</div>
+	</div>
+	
+
+
+	<div class="row col-lg-9 col-md-offset-1">
+	<div class ="" ng-if = "!is500">
+        <div class = "panel panel-primary">
+        <div class = "panel-heading">
+
+		  <h2 class = "topicBanner"> {{topic}} </h2>
+        </div>
+</div>
+	</div>
+	<!-- If No Error and Posts - Display Posts -->
+	<hr>
+	<div class="" ng-if="!is404 && !is500" ng-repeat="p in posts track by $index">
+		<!-- <p> Post {{$index+1}} <p> -->
+        <div class = "panel panel-primary">
+        <div class = "panel-heading">
+		<h3><a class="text-left" style="color:white;" ng-href="/g/topics/{{p.topic}}/{{p.post_id}}"> {{p.title}}</a> <div class="pull-right"> {{p.ups - p.downs}} <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> </div> </h3>
+        	
+	</div>
+        <div class = "panel-body">
+		<p> Submitted by <a href="/g/users/{{p.author_id}}">{{p.author_name}} </a> at {{parseDate(p.date)}} to {{p.topic}}</p>
+        </div>
+        </div>
+	</div>
+
+	<!-- If no Posts -->
+	<div class="error" ng-if="is404">
+		<h1>No Posts Found. Why don't you add one?</h1>
+	</div>
+
+	<!-- If Error -->
+	<div class="error" ng-if="is500">
+		<img src="/g/assets/img/500.jpg" />
+		<h1>Topic Not Found</h1>
+	</div>
+	</div>
+	
+</div>
+</div>
+</div>
+</div>

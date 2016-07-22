@@ -1,0 +1,45 @@
+<div class = "" data-ng-controller="YelpController" ng-init="loadRestaurants()">
+<h2>Restaurants Found Near You. Powered By <img src="g/assets/img/yelp-logo-xsmall@2x.png"> </h2>
+      <div class = "textBoxShadow">
+<hr>
+    </div>
+<div ng-repeat="restaurant in restaurants">
+    <div class = "container">
+        <div class = "panel panel-primary">
+            <div class = "panel-heading">
+                <div class = "panel-title"><h4> <a style="color:white;" href="{{restaurant.mobile_url}}"> {{restaurant.name}} </a> <img src="{{restaurant.rating_img_url}}" /> </h4></div>
+                </div> 
+                    <div class = "panelBodyWrapper">
+                    <div class = "panel-body">
+                        <div class = "row"> 
+                        <div class = "col-sm-6">
+                        <div class = "well">    
+                            <img class = "yelpRestaurantImg" src="{{restaurant.image_url}} " />
+                        <div class = "col-sm-6">   
+                            <p> Phone Number: {{restaurant.phone}} </p>
+                            <p> Address:  {{restaurant.location.display_address[0]}}, {{restaurant.location.display_address[1]}}, {{restaurant.location.display_address[2]}} </p>
+                            <p> Categories: {{displayCategories(restaurant)}} </p>
+                        </div>    
+                        </div>
+                        </div> 
+                        </div>    
+                        <!--<img src="{{restaurant.rating_img_url}}" /> add this at the top? -->
+                        
+                        <div class = "well">
+                            <p><b>Top Review</b></p>
+                            <!--<img class = "yelpSnippetImg" src="{{restaurant.snippet_image_url}}" /> condense this and place inside the paragraph -->
+                            <div class = "row">
+                                <div class = "col-sm-6">    
+                                <p>{{restaurant.snippet_text}} </p>
+                                </div>
+                                <div class = "col-sm-6">
+                                <img class = "yelpSnippetImg" src="{{restaurant.snippet_image_url}}" />
+                                </div>   
+                            </div>
+                        </div>    
+                    </div>
+                    </div>
+        </div>
+    </div>    
+</div>
+</div>

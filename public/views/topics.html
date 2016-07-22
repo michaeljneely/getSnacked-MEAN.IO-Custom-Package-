@@ -1,0 +1,40 @@
+<style>
+    .btn btn-primary btn-lg btn-block{
+        transition: background-color 0.1s ease;
+        background-color: #27ae60;
+        padding-top: 5px;
+        padding-bottom: 2px;
+    }
+    
+    .btn btn-primary btn-lg btn-block:hover{
+        background-color:rgb(39,174,96);
+    }
+</style>
+ <div class = "row text-center">
+		<h2>Topics</h2>
+     <div class = "textBoxShadow">
+		<hr>
+     </div>     
+	</div>
+<div class = "topicGrid">
+    <div class = "container">
+        <div class = "row">
+            <div class = "span4">
+                <div class="topics-homepage" data-ng-controller="TopicsController" ng-init="load()">
+	               <div class="topics-list" ng-repeat="t in topics">
+                        <div class="whFix">   
+                            <div class="col-xs-12 col-md-4 col-sm-6 ">
+                                <div class = "textBoxShadow">    
+                                 <div style = "background-color:#27ae60; color:white;" class = "well">
+                                    <a style = "color:white; font-weight = 600;" ng-href="/g/topics/{{t.topic_id}}" ><!--{{t.rank}} - --><h2>{{t.topic_id}}</h2> <hr></a> <p> {{t.description}} </p>
+                                 </div>
+                                </div>
+                            </div>
+	                   </div>
+                    </div>       
+                </div>
+            </div>
+        </div>    
+    </div>    
+  </div>
+</div>
